@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+}
+
+.select2-selection__rendered {
+    color: 'green' !important;
+}
+
+.dt-button-collection dtb-b2 {
+    margin-top: 8px !important;
+    width: 100px !important;
+}
