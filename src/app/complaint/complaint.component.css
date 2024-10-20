@@ -1,0 +1,50 @@
+.image-row {
+    text-align: center;
+}
+
+@media (min-width: 720px) {
+    .image-row {
+        text-align: left;
+    }
+}
+
+.image-gallery-link {
+    display: inline-block;
+    padding: 4px;
+    margin: 0 0.5rem 1rem 0.5rem;
+    background-color: var(--bg-color);
+    line-height: 0;
+    border-radius: var(--border-radius-large);
+}
+
+.image-gallery-link:hover {
+    background-color: var(--primary-color);
+}
+
+.gallery-image-thumb {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.requiredoutline {
+    border: 0.125px initial black;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: red;
+}
+
+.inputBorder {
+    border-color: red;
+    border-radius: 4px;
+}
+
+.bs-stepper-circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 14px;
+}

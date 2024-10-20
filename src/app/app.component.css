@@ -1,0 +1,24 @@
+.rolePageHide {
+    display: none !important;
+}
+
+.roleHide {
+    display: none !important;
+}
+
+.bold-text {
+    color: red;
+    font-style: italic;
+}
+
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+}
+
+.hide {
+    display: none !important;
+}
