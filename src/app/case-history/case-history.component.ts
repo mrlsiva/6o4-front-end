@@ -7,6 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { SearchProfileData, UserModel, UserProfile } from '../user/user.viewmodel';
 import { AppService } from '../services/app.services';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 declare var jQuery: any;
 declare var Lobibox: any;
 @Component({
@@ -15,6 +16,12 @@ declare var Lobibox: any;
   styleUrls: ['./case-history.component.css']
 })
 export class CaseHistoryComponent implements AfterViewInit {
+  model: NgbDateStruct | null = null; // Holds the selected date
+  showCustom: boolean = false; // Control custom date range visibility
+  startDate: NgbDateStruct | null = null; // Custom start date
+  endDate: NgbDateStruct | null = null; // Custom end date
+  selectedRange: string = ''; // Declare selectedRange property
+
   public caseHistoryDataList: any;
   _selectedInspectorItems: any[] = [];
   _selectedProgramsItems: any[] = [];
@@ -105,6 +112,56 @@ export class CaseHistoryComponent implements AfterViewInit {
       });
     });
 
+  }
+ // Helper function to convert NgbDateStruct to Date
+ private convertNgbDateToDate(ngbDate: NgbDateStruct): Date {
+  return new Date(ngbDate.year, ngbDate.month - 1, ngbDate.day);
+}
+
+  // Set the selected range for 'Today'
+  setToday() {
+    const today = new Date();
+    this.model = { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() }; // Set today's date
+    this.showCustom = false; // Hide custom range inputs
+    this.selectedRange = `${today.toISOString().slice(0, 10)}`; // Update selected range for today
+  }
+
+  // Implement setThisWeek method
+  setThisWeek() {
+    const today = new Date();
+    const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Start of the week
+    const endOfWeek = new Date(today.setDate(startOfWeek.getDate() + 6)); // End of the week
+    this.selectedRange = `${startOfWeek.toISOString().slice(0, 10)} to ${endOfWeek.toISOString().slice(0, 10)}`; // Update selected range for this week
+    this.model = { year: startOfWeek.getFullYear(), month: startOfWeek.getMonth() + 1, day: startOfWeek.getDate() }; // Optionally update model
+  }
+
+  // Implement setThisMonth method
+  setThisMonth() {
+    const today = new Date();
+    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1); // Start of the month
+    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0); // End of the month
+    this.selectedRange = `${startOfMonth.toISOString().slice(0, 10)} to ${endOfMonth.toISOString().slice(0, 10)}`; // Update selected range for this month
+    this.model = { year: startOfMonth.getFullYear(), month: startOfMonth.getMonth() + 1, day: startOfMonth.getDate() }; // Optionally update model
+  }
+
+  // Implement custom range application logic
+  applyCustomRange() {
+    if (this.startDate && this.endDate) {
+      const start = new Date(this.startDate.year, this.startDate.month - 1, this.startDate.day);
+      const end = new Date(this.endDate.year, this.endDate.month - 1, this.endDate.day);
+      this.selectedRange = `${start.toISOString().slice(0, 10)} to ${end.toISOString().slice(0, 10)}`; // Update selected range for custom range
+      this.model = { year: start.getFullYear(), month: start.getMonth() + 1, day: start.getDate() }; // Optionally update model
+    }
+  }
+
+  // Show the custom range date pickers
+  // showCustomRange() {
+  //   this.showCustom = true;
+  //   this.selectedRange = ''; // Clear the input
+  // }
+
+  showCustomRange() {
+    this.showCustom = true; // Show custom range inputs
   }
   logout() {
     localStorage.clear();

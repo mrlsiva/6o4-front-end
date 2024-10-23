@@ -30,6 +30,8 @@ import { CategoryComponent } from './category/category.component';
 import { InspectormappingComponent } from './inspectormapping/inspectormapping.component';
 import { AiSearchComponent } from './ai-search/ai-search.component';
 import { ManageSearchProfileComponent } from './manage-search-profile/manage-search-profile.component';
+import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,7 @@ import { ManageSearchProfileComponent } from './manage-search-profile/manage-sea
     HttpClientModule,
     FormsModule,
     GoogleMapsModule,
-
+    NgbModule,
   ],
   providers: [APIURLConstant, ComplaintService],
   bootstrap: [AppComponent]

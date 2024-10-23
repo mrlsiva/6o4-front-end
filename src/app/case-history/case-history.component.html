@@ -67,8 +67,70 @@
                       {{_st?.streetname}} {{_st?.streettype}}</option>
                   </select>
                 </div>
-
+                <div class="col-3">
+                  <label for="" class="form-label">Date</label>
+                  <div class="input-group mb-3">
+                    <input
+                      class="form-control"
+                      placeholder="yyyy-mm-dd"
+                      name="dp"
+                      [(ngModel)]="model"
+                      ngbDatepicker
+                      #d="ngbDatepicker"
+                    />
+                    <button
+                      class="btn btn-outline-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                    <i class="bx bx-calendar"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" (click)="setToday()">Today</a></li>
+                        <li><a class="dropdown-item" (click)="setThisWeek()">This Week</a></li>
+                        <li><a class="dropdown-item" (click)="setThisMonth()">This Month</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" (click)="showCustomRange()">Custom Range</a></li>
+                    </ul>
+                </div>
+                
+              
+                <div *ngIf="showCustom">
+                    <div class="input-group mb-3">
+                        <input
+                          class="form-control"
+                          placeholder="Start Date"
+                          name="start"
+                          [(ngModel)]="startDate"
+                          ngbDatepicker
+                          #startDp="ngbDatepicker"
+                        />
+                        <button class="btn btn-outline-secondary" (click)="startDp.toggle()" type="button">
+                          <i class="bx bx-calendar"></i>
+                        </button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input
+                          class="form-control"
+                          placeholder="End Date"
+                          name="end"
+                          [(ngModel)]="endDate"
+                          ngbDatepicker
+                          #endDp="ngbDatepicker"
+                        />
+                        <button class="btn btn-outline-secondary" (click)="endDp.toggle()" type="button">
+                          <i class="bx bx-calendar"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary" (click)="applyCustomRange()">Apply</button>
+                </div>
+                
+                  </div>
               </div>
+             
+              
             </form>
           </div>
         </div>
@@ -174,7 +236,7 @@
 
                     </select>
                   </div>
-
+                  
                   <!-- <div class="col-3">
                     <label for="housingpermit">Housing Permit</label>
                     <input id="housingpermit" name="housingpermit" type="text" class="form-control"
