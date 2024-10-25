@@ -838,6 +838,7 @@ export class CaseHistoryComponent implements AfterViewInit {
       fixedColumns: true,
       initComplete: function () {
         var api = this.api();
+        
         api
           .columns()
           .eq(0)
@@ -869,8 +870,10 @@ export class CaseHistoryComponent implements AfterViewInit {
                       ? regexr.replace('{search}', '(((' + this.value + ')))')
                       : '',
                     this.value != '',
+                    
                     this.value == ''
                   )
+
                   .draw();
               })
               .on('keyup', function (this: any, e: any) {
@@ -1098,7 +1101,9 @@ export class CaseHistoryComponent implements AfterViewInit {
       inspectorId: [],
       programType: [],
       status: [],
-      street: []
+      street: [],
+      createDate: null,
+      cuDate: null
     }
   }
   resetAdvancedSearchViewModel() {
@@ -1131,6 +1136,7 @@ export class CaseHistoryComponent implements AfterViewInit {
       this.filterDataArray = [];
       //case number
       if ((this._caseHistoryViewModel.caseno != null) && (this._caseHistoryViewModel.caseno.length > 0)) {
+
         this._simpleSearchExViewModel.caseId = this._caseHistoryViewModel.caseno.split(',');
         this.filterDataArray.push({ key: "Case No", value: this._caseHistoryViewModel.caseno });
         //this._advancedSearchViewModel.caseId.push(this._caseHistoryViewModel.caseno);
@@ -1205,7 +1211,39 @@ export class CaseHistoryComponent implements AfterViewInit {
           this._caseHistoryViewModel.program = element;
         });
       }
+      this._simpleSearchExViewModel.createDate =  {
+          "actualEndDate": "2024-10-24T09:30:28.937Z",
+          "actualStartDate": "2024-10-24T09:30:28.937Z",
+          "dateType": "TODAY",
+          "endDate": "2024-10-24",
+          "startDate": "2024-10-24"
+        }
+        this._simpleSearchExViewModel.cuDate =  {
+          "actualEndDate": "2024-10-24T09:30:28.937Z",
+          "actualStartDate": "2024-10-24T09:30:28.937Z",
+          "dateType": "TODAY",
+          "endDate": "2024-10-24",
+          "startDate": "2024-10-24"
+        }
+      // // Date Range (Calendar Search)
+      // const startDate = jQuery('#startDate').val();
+      // const endDate = jQuery('#endDate').val();
 
+      // if (startDate && endDate) {
+      //   this._simpleSearchExViewModel.startDate = new Date(startDate);
+      //   this._simpleSearchExViewModel.endDate = new Date(endDate);
+        
+      //   // Format for display in filter summary
+      //   this.filterDataArray.push({ key: "Date Range", value: `${startDate} to ${endDate}` });
+      // }
+    //   "createDate": {
+    //   "actualEndDate": "2024-10-24T09:30:28.937Z",
+    //   "actualStartDate": "2024-10-24T09:30:28.937Z",
+    //   "dateType": "TODAY",
+    //   "endDate": "2024-10-24",
+    //   "startDate": "2024-10-24"
+    // },
+      console.log('model' + JSON.stringify(this.model));
       console.log('Case History View Model:', this._caseHistoryViewModel);
       console.log('Filter Data Array:', this.filterDataArray);
     } catch (error) {
@@ -1352,7 +1390,7 @@ export class CaseHistoryComponent implements AfterViewInit {
     this.filterDataArray.push({ key: key, value: value });
   }
   search() {
-    console.log('Search Model');
+    console.log('Search Model' + this.isSimpleSearch);
     if (this.isSimpleSearch) {
       this.assignSimpleSearchModel();
     } else if (this.isSimpleSearch == false) {
