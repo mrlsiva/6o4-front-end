@@ -44,15 +44,17 @@
                       {{_st?.value}}</option>
                   </select>
                 </div>
+                
                 <div class="col-3">
                   <label for="selectStatus_s" class="form-label">Status</label>
                   <select id="selectStatus_s" name="status" class="form-control" data-placeholder="Choose Status..."
                     multiple>
-                    <!-- <option selected="">Choose...</option> -->
+                   
                     <option *ngFor="let _st of _statusList" value={{_st?.code}}>
                       {{_st?.value}}</option>
                   </select>
                 </div>
+
                 <div class="col-3">
                   <label for="addressNumber" class="form-label">Number</label>
                   <input id="addressNumber" name="addressnumber" type="text" class="form-control"

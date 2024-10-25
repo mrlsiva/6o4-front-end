@@ -509,11 +509,10 @@ export class CaseHistoryComponent implements AfterViewInit {
     let selectedStatus = d.status;
     if (selectedStatus?.length > 0) {
       selectedStatus.forEach((e: any) => {
-        //console.log('Status COde:', this._statusList.find(v1 => v1.code == e).value);
         this.filterDataArray.push({ key: "status", value: this._statusList.find(v1 => v1.code == e).value });
       });
     }
-
+    
     if (d.street != null && d.street.length > 0) {
       var st: string[] = [];
       d.street.forEach((x: any, index: any) => {
@@ -547,7 +546,6 @@ export class CaseHistoryComponent implements AfterViewInit {
     let selectedStatus = d.status;
     if (selectedStatus?.length > 0) {
       selectedStatus.forEach((e: any) => {
-        //console.log('Status COde:', this._statusList.find(v1 => v1.code == e).value);
         this.filterDataArray.push({ key: "status", value: this._statusList.find(v1 => v1.code == e).value });
       });
     }
