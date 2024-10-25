@@ -1102,8 +1102,8 @@ export class CaseHistoryComponent implements AfterViewInit {
       programType: [],
       status: [],
       street: [],
-      createDate: null,
-      cuDate: null
+      // createDate: null,
+      // cuDate: null
     }
   }
   resetAdvancedSearchViewModel() {
@@ -1211,20 +1211,20 @@ export class CaseHistoryComponent implements AfterViewInit {
           this._caseHistoryViewModel.program = element;
         });
       }
-      this._simpleSearchExViewModel.createDate =  {
-          "actualEndDate": "2024-10-24T09:30:28.937Z",
-          "actualStartDate": "2024-10-24T09:30:28.937Z",
-          "dateType": "TODAY",
-          "endDate": "2024-10-24",
-          "startDate": "2024-10-24"
-        }
-        this._simpleSearchExViewModel.cuDate =  {
-          "actualEndDate": "2024-10-24T09:30:28.937Z",
-          "actualStartDate": "2024-10-24T09:30:28.937Z",
-          "dateType": "TODAY",
-          "endDate": "2024-10-24",
-          "startDate": "2024-10-24"
-        }
+      // this._simpleSearchExViewModel.createDate =  {
+      //     "actualEndDate": "2024-10-24T09:30:28.937Z",
+      //     "actualStartDate": "2024-10-24T09:30:28.937Z",
+      //     "dateType": "TODAY",
+      //     "endDate": "2024-10-24",
+      //     "startDate": "2024-10-24"
+      //   }
+      //   this._simpleSearchExViewModel.cuDate =  {
+      //     "actualEndDate": "2024-10-24T09:30:28.937Z",
+      //     "actualStartDate": "2024-10-24T09:30:28.937Z",
+      //     "dateType": "TODAY",
+      //     "endDate": "2024-10-24",
+      //     "startDate": "2024-10-24"
+      //   }
       // // Date Range (Calendar Search)
       // const startDate = jQuery('#startDate').val();
       // const endDate = jQuery('#endDate').val();
