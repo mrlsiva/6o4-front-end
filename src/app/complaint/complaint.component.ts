@@ -13,8 +13,6 @@ import { CaseStatusState } from '../app.complaintmodel';
 import { UserModel, UserProfile } from '../user/user.viewmodel';
 import { DatePipe } from '@angular/common';
 import { DataTableDirective } from 'angular-datatables';
-import 'select2';
-
 
 
 
@@ -24,21 +22,12 @@ declare var stepper1: any;
 declare var bstreeview: any;
 declare var Lobibox: any;
 declare var lightbox: any;
-interface Street {
-  id: number;
-  streetTypeCode: string;
-  status: boolean;
-  streetname: string;
-  streettype: string;
-}
 
 @Component({
   selector: 'app-complaint',
   templateUrl: './complaint.component.html',
   styleUrls: ['./complaint.component.css']
 })
-
-
 export class ComplaintComponent {
   dtElement: DataTableDirective;
   changeStatus() {
@@ -662,19 +651,6 @@ export class ComplaintComponent {
     });
 
     this._complaintServiceCall.get(this._urlConstant.StreetMasterModule, this._urlConstant.GetAll).subscribe((response) => {
-      response.data.forEach((item: any) => {
-        $('#streetSelect').append(new Option(`${item.streetname} (${item.streettype})`, item.id));
-    });
-
-    // Initialize Select2 on the dropdown
-    ($('#streetSelect') as any).select2({
-        placeholder: "Select Streets",
-        allowClear: true
-    });
- 
-
-
-
       this._streetMasterDataList = [];
       if (response.status == "SUCCESS") {
         this._streetMasterDataList = response.data;

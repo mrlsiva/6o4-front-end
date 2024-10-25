@@ -38,6 +38,14 @@ export class CaseSearchResult {
     casedescription: string;
 }
 
+// export class SimpleSearchViewModel {
+//     caseId: any[] = [];
+//     inspectorId: any[] = [];
+//     programtype: any[] = [];
+//     houseNumber: any[] = [];
+//     status: any[] = [];
+//     street: any[] = [];
+// }
 export class SimpleSearchExViewModel {
     caseId: any[] = [];
     inspectorId: any[] = [];
@@ -70,6 +78,24 @@ export class AdvancedSearchViewModel {
     violationType: any[] = [];
     supervisorId: any[] = [];
 }
+// caseId: any[] = [];
+// status: any[] = [];
+// source: any[] = [];
+// programType: any[] = [];
+// inspectorId: any[] = [];
+// casePriority: any[] = [];
+// caseDate: any;
+// violationType: any[] = [];
+// // cdbg: any[] = [];
+// // adminCitation: any[] = [];
+// caseDescription: any;
+// APN: any[] = [];
+// number: any[] = [];
+// street: any[] = [];
+// housePermit: any;
+// // responsibleParty: any[] = [];
+// addressNumber: any[] = [];
+
 export class CaseHistoryInputData {
     caseno: string;
     inspector: string;
